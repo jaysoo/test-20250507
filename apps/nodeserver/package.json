@@ -1,67 +1,14 @@
 {
-  "name": "@node1/nodeserver",
+  "name": "@react-monorepo/nodeserver",
   "version": "0.0.1",
-  "private": true,
-  "nx": {
-    "name": "nodeserver",
-    "targets": {
-      "build": {
-        "executor": "@nx/esbuild:esbuild",
-        "outputs": [
-          "{options.outputPath}"
-        ],
-        "defaultConfiguration": "production",
-        "options": {
-          "platform": "node",
-          "outputPath": "apps/nodeserver/dist",
-          "format": [
-            "cjs"
-          ],
-          "bundle": false,
-          "main": "apps/nodeserver/src/main.ts",
-          "tsConfig": "apps/nodeserver/tsconfig.app.json",
-          "assets": [
-            "apps/nodeserver/src/assets"
-          ],
-          "esbuildOptions": {
-            "sourcemap": true,
-            "outExtension": {
-              ".js": ".js"
-            }
-          }
-        },
-        "configurations": {
-          "development": {},
-          "production": {
-            "esbuildOptions": {
-              "sourcemap": false,
-              "outExtension": {
-                ".js": ".js"
-              }
-            }
-          }
-        }
-      },
-      "serve": {
-        "continuous": true,
-        "executor": "@nx/js:node",
-        "defaultConfiguration": "development",
-        "dependsOn": [
-          "build"
-        ],
-        "options": {
-          "buildTarget": "nodeserver:build",
-          "runBuildTargetDependencies": false
-        },
-        "configurations": {
-          "development": {
-            "buildTarget": "nodeserver:build:development"
-          },
-          "production": {
-            "buildTarget": "nodeserver:build:production"
-          }
-        }
-      }
-    }
+  "main": "dist/main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/main.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "tsx": "^4.17.0",
+    "typescript": "~5.7.2"
   }
 }
